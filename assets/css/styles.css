@@ -1,0 +1,269 @@
+@font-face {
+	font-family: 'Blogger';
+	src: url('../fonts/blogger/BloggerSans.eot'); /* IE9 Compat Modes */
+	src: url('../fonts/blogger/BloggerSans.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	url('../fonts/blogger/BloggerSans.woff') format('woff'), /* Modern Browsers */
+	url('../fonts/blogger/BloggerSans.ttf') format('truetype'), /* Safari, Android, iOS */
+	url('../fonts/blogger/BloggerSans.svg#BloggerSans-Bold') format('svg'); /* Legacy iOS */
+	font-style: normal;
+	font-weight: normal;
+	text-rendering: optimizeLegibility;
+}
+/*
+h1 {
+	font-family: 'Blogger';
+}
+h2 {
+	font-family: 'Blogger';
+	font-weight: 700;
+}
+p.sample {
+	font-family: 'Blogger';
+	font-size: 20px;
+}*/
+
+* {-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+html{height: 100%; overflow-y: scroll; -ms-overflow-style: scrollbar; text-rendering: optimizeLegibility !important; -webkit-font-smoothing: antialiased !important;}
+
+/* ---------------------  teaser ------------------------*/
+.wrapper {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+.wrapper img {
+	width: 400px;
+}
+.margin-top {
+	margin-top: 60px;
+}
+
+/* -----------------------------------------------------*/
+
+.imgMediaInside {
+	display: block;
+	position: relative;
+	border-radius: 0 0 10px 10px;
+	width: 100%;
+	height: 700px;
+	margin-bottom: 5%;
+	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-position: 50% 50%;
+}
+.imgMediaInsidePromo{
+	position: absolute;
+	left: 5%;
+	top: 50%;
+	z-index: 1;
+	width: 600px;
+	transform: translate(0, -50%);
+	-moz-transform: translate(0, -50%);
+	-webkit-transform: translate(0, -50%);
+	-o-transform: translate(0, -50%);
+	-ms-transform: translate(0, -50%);
+}
+nav {
+	box-shadow: none;
+	margin: 20px 0;
+}
+
+.black-text li a {
+	color: #404040;
+	font-size: 16px;
+}
+.fitImage {
+	max-width: 100%;
+}
+.logo{
+	height: 65px;
+}
+.linkDisabled {
+	pointer-events: none;
+	opacity: 0.6;
+}
+.material-icon-custom {
+	color: #afb42b; /* кислотный */
+	font-size: 45px;
+}
+.promo-caption {
+	color: #4527a0; /* фиолетовый */
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.fitImage {
+	max-width: 100%;
+}
+
+.colorLineBack {
+	width: 100%;
+	height: 7px;
+	position: relative;
+}
+
+.noMargin {
+	margin: 0;
+	padding: 15px;
+}
+.footer-bar-fixed-bottom{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	/*padding: 5px 5px 25px 5px;			*/
+}
+.red {
+	color: Red;
+	background: none !important;
+}
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
+	color: #4527a0;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover {
+	color: #afb42b;
+}
+.card-title-20 {
+	font-size: 20px !important;
+	color: #4527a0 !important;
+}
+.card-title-18 {
+	font-size: 18px !important;
+	color: #4527a0 !important;
+}
+.card-title-16 {
+	font-size: 16px !important;
+}
+.border-top {
+	border-top: 1px solid LightGray;
+}
+.card .card-content .card-title i {
+	line-height: 22px;
+}
+.cardCustom:hover .card{
+	-webkit-box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.3);
+	background: #f5f5f5;
+}
+
+.cardCustom:hover .card .card-image .activator {
+	opacity: 1;
+	-webkit-transition: all 1s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+	-moz-transition: all 1s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+	-o-transition: all 1s cubic-bezier(0.190, 1.000, 0.220, 1.000);;
+	transition: all 1s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+}
+.activator {
+	opacity: 0.7;
+	-webkit-transition: all 1s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+	-moz-transition: all 1s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+	-o-transition: all 1s cubic-bezier(0.190, 1.000, 0.220, 1.000);;
+	transition: all 1s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+}
+
+.alphabetButton {
+	display: inline-block;
+	margin-bottom: 4px;
+	border-radius: 4px;
+	width: 34px;
+	height: 34px;
+	border: none;
+	font-family: 'Blogger';
+	font-weight: 500;
+	line-height: 34px;
+	background: #afb42b;
+}
+.alphabetButton:hover {
+	background: #7e8218; /* темно кислотный */
+	-webkit-transition: all 1s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+	-moz-transition: all 1s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+	-o-transition: all 1s cubic-bezier(0.190, 1.000, 0.220, 1.000);;
+	transition: all 1s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+}
+.blogger {
+	font-family: 'Blogger';
+	font-weight: 500;
+}
+.lastElementMargin {
+	margin-bottom: 50px;
+}
+.custom-content-size {
+	font-size: 13px;
+}
+.off {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+img.responsive-img-size_50 {
+	max-width: 50%;
+	height: auto;
+}
+.pushpin_fixed {
+	position: fixed;
+	top: 0;
+}
+.collapsible-header {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+	line-height: 1.5;
+	padding: 0.7rem;
+	background-color: #fff;
+	border-bottom: 1px solid #ddd;
+}
+
+.collapsible-header {
+
+}
+
+.collapsible-header i {
+	width: 2rem;
+	font-size: 1.6rem;
+	display: inline-block;
+	text-align: center;
+	margin-right: 1rem;
+}
+
+.collapsible-body {
+	display: none;
+	border-bottom: 1px solid #ddd;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 2rem;
+}
+.video-container-memory {
+	margin: 20px 0;
+}
+.collapsible-size100 {
+	width: 100%;
+}
+.collapsible-header:hover {
+	background: #afb42b;
+	color: White;
+	-webkit-transition: all 1s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+	-moz-transition: all 1s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+	-o-transition: all 1s cubic-bezier(0.190, 1.000, 0.220, 1.000);;
+	transition: all 1s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+}
+
+
+
+
+@media screen and (max-width: 1366px) {
+	.imgMediaInsidePromo {
+		width: 500px;
+	}
+}
+

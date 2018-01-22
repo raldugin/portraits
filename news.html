@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Portraits.ua</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="assets/css/materialize.css" media="screen,projection">
+	<style>
+		.imgMediaInside {
+
+			display: block;
+			position: relative;
+			border-radius: 0 0 10px 10px;
+			width: 100%;
+			height: 700px;
+			margin-bottom: 5%;
+			background-repeat: no-repeat;
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+			background-position: 50% 50%;
+		}
+		.imgMediaInsidePromoText{
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			z-index: 1;
+			color: white;
+			font-size: 20px;
+			transform: translate(-50%, -50%);
+			-moz-transform: translate(-50%, -50%);
+			-webkit-transform: translate(-50%, -50%);
+			-o-transform: translate(-50%, -50%);
+			-ms-transform: translate(-50%, -50%);
+		}
+
+		nav {
+			box-shadow: none;
+			margin: 20px 0;
+		}
+
+		.black-text li a {
+			color: #404040;
+			font-size: 16px;
+		}
+		.fitImage {
+			max-width: 100%;
+		}
+		.logo{
+			height: 65px;
+		}
+		.linkDisabled {
+			pointer-events: none;
+			opacity: 0.6;
+		}
+		.materil-icon-custom {
+		/color: #4527a0; /* фиолетовый */
+			color: #afb42b; /* кислотный */
+			font-size: 45px;
+		}
+		.promo-caption {
+			color: #4527a0; /* фиолетовый */
+			font-size: 20px;
+			font-weight: bold;
+		}
+
+		.fitImage {
+			max-width: 100%;
+		}
+
+		.colorLineBack {
+			width: 100%;
+			height: 10px;
+			position: relative;
+		}
+
+		.noMargin {
+			margin: 0;
+			padding: 15px;
+		}
+		.footer-bar-fixed-bottom{
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			/*padding: 5px 5px 25px 5px;			*/
+		}
+		nav {
+			box-shadow: none;
+			margin: 20px 0;
+		}
+
+		.black-text li a {
+			color: #404040;
+			font-size: 16px;
+		}
+		.fitImage {
+			max-width: 100%;
+		}
+		.logo{
+			height: 65px;
+		}
+		.linkDisabled {
+			pointer-events: none;
+			opacity: 0.6;
+		}
+		.materil-icon-custom {
+		/color: #4527a0; /* фиолетовый */
+			color: #afb42b; /* кислотный */
+			font-size: 45px;
+		}
+		.promo-caption {
+			color: #4527a0; /* фиолетовый */
+			font-size: 20px;
+			font-weight: bold;
+		}
+
+		.fitImage {
+			max-width: 100%;
+		}
+
+		.colorLineBack {
+			width: 100%;
+			height: 10px;
+			position: relative;
+		}
+
+		.noMargin {
+			margin: 0;
+			padding: 15px;
+		}
+		.footer-bar-fixed-bottom{
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			/*padding: 5px 5px 25px 5px;			*/
+		}
+		.red {
+			color: Red;
+			background: none !important;
+		}
+		.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
+			color: #4527a0;
+		}
+
+		.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover {
+			color: #afb42b;
+		}
+		@media screen and (max-width: 1366px) {
+			.imgMediaInsidePromo {
+				width: 500px;
+			}
+		}
+
+	</style>
+</head>
+<body>
+<div id="page-wrapper"> <!-- page wrapper for footer calculate-->
+	<header>
+		<section class="container">
+			<nav class="white">
+				<div class="nav-wrapper">
+					<a href="index.php" class="brand-logo"><img src="assets/logo/logo_ua.svg" class="logo"></a>
+					<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons black-text" style="font-size: 35px;">menu</i></a>
+					<ul class="right hide-on-med-and-down black-text">
+						<li><a class="dropdown-button" href="#!" data-activates="dropdown1">Про проект<i class="material-icons right">arrow_drop_down</i></a>
+							<ul id="dropdown1" class="dropdown-content">
+								<li><a href="project/about/index.html">Опис проекту</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Умови участі</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Реєстрація</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Партнери</a></li>
+							</ul>
+						</li>
+						<li class="linkDisabled"><a href="#">Банк портретів</a></li>
+						<li><a class="dropdown-button" href="#!" data-activates="dropdown2">Довідкові матеріали<i class="material-icons right">arrow_drop_down</i></a>
+							<ul id="dropdown2" class="dropdown-content">
+								<li><a href="#">Словничок</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Статті</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Відео</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Лекції</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Виставки</a></li>
+							</ul>
+						</li>
+						<li><a href="#">Контакти</a></li>
+					</ul>
+					<!-- мобильное меню -->
+					<ul class="side-nav" id="mobile-demo">
+						<li><a class="dropdown-button-mobile" href="#" data-activates="dropdown1-mobile">Про проект<i class="material-icons right">arrow_drop_down</i></a>
+							<ul id="dropdown1-mobile" class="dropdown-content">
+								<li><a href="project/about/index.html">Опис проекту</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Умови участі</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Реєстрація</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Партнери</a></li>
+							</ul>
+						</li>
+						<li class="linkDisabled"><a href="#">Банк портретів</a></li>
+						<li><a class="dropdown-button-mobile" href="#" data-activates="dropdown2-mobile">Довідкові матеріали<i class="material-icons right">arrow_drop_down</i></a>
+							<ul id="dropdown2-mobile" class="dropdown-content">
+								<li><a href="#">Словничок</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Статті</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Відео</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Лекції</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Виставки</a></li>
+							</ul>
+						</li>
+						<li><a href="#">Контакти</a></li>
+					</ul>
+					<!-- end мобильное меню -->
+				</div>
+			</nav>
+		</section>
+	</header>
+
+<main>
+	<section class="container">
+		<div class="colorLineBack deep-purple darken-3"></div>
+		<div class="deep-purple lighten-3"><h5 class="white-text noMargin">Новини проекту / Заголовок новини!!!!</h5></div>
+	</section>
+
+	<section class="container" style="margin-bottom: 70px; margin-top: 40px;">
+		<div class="row">
+			<div class="col s12 m5 l5">
+				<div class="card z-depth-0">
+					<div class="card-image">
+						<img src="img/news/1/1.jpg">
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m7 l7">
+				<div class="card z-depth-0">
+					<div style="position: relative; margin-top: -10px;">
+						<p>Презентація «ПортретівUA». Першим про новий освітній проект ми розповіли друзям – учням «Школи Миру» Федерації всесвітнього миру. Ідея  зібрання та популяризації історій українців – Праведників народів світу дуже сподобалася аудиторії. Це завдання тісно перегукується із завданням самої «Школи Миру» – поширення ідеї миру та формування миротворчого іміджу України. </p>
+						<p>Під час презентації підлітки дізналися окремі історії порятунку євреїв у роки Другої світової війни, обговорили персоналії своїх майбутніх досліджень. Також, аби 13-18 річні громадяни краще осягнули дилему вибору: чи рятувати іншу людину, коли на кону стоїть власне життя, їм запропонували інтерактивну гру «Тримай мене». Тренінг сподобався його учасникам. Обговорення показало високий ступінь усвідомлення ними важливості подвигу Праведників народів світу.</p>
+						<p>Історичні портрети від учнів «Школи миру» незабаром з’являться на сайті проекту.</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+</main>
+</div> <!-- end of page wrapper -->
+
+<footer class="page-footer lime darken-2">
+	<div class="container">
+		<div class="row">
+			<div class="col l6 s12">
+				<h5 class="white-text">Footer Content</h5>
+				<p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+			</div>
+			<div class="col l4 offset-l2 s12">
+				<!--<h5 class="white-text">Links</h5>
+				<ul>
+					<li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+					<li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+					<li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+					<li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+				</ul>-->
+			</div>
+		</div>
+	</div>
+	<div class="footer-copyright">
+		<div class="container">
+			© 2017 Національний музей історії України у Другій світовій війні. Меморіальний комплекс.
+		</div>
+	</div>
+</footer>
+
+</body>
+
+<script src="//code.jquery.com/jquery-latest.js"></script>
+<script src="assets/js/materialize.js"></script>
+<script src="assets/js/jquery.matchHeight-min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.dropdown-button').dropdown({
+                constrainWidth: true, // Does not change width of dropdown to that of the activator
+                hover: true, // Activate on hover
+                gutter: 0, // Spacing from edge
+                belowOrigin: true, // Displays dropdown below the button
+                alignment: 'left', // Displays dropdown with edge aligned to the left of button
+                stopPropagation: false // Stops event propagation
+            }
+        );
+        $('.dropdown-button-mobile').dropdown({
+                constrainWidth: true, // Does not change width of dropdown to that of the activator
+                hover: false, // Activate on hover
+                gutter: 0, // Spacing from edge
+                belowOrigin: true, // Displays dropdown below the button
+                alignment: 'left', // Displays dropdown with edge aligned to the left of button
+                stopPropagation: false // Stops event propagation
+            }
+        );
+        $('.button-collapse').sideNav();
+        $('.matchheight').matchHeight();
+        stickyFooter();
+        sizeImgMediaInside();
+
+        function sizeImgMediaInside() {
+            var windowHeight = window.innerHeight;
+            var imgHeight = Math.round(windowHeight / 10 * 4);
+            $('.imgMediaInside').height(imgHeight);
+        }
+
+        $(window).resize(function () {
+            clearTimeout(t);
+            var t = setTimeout(doAfterResize, 50);
+        });
+
+        function doAfterResize() {
+            sizeImgMediaInside();
+            stickyFooter();
+        }
+        function stickyFooter(){
+            var footer = $(".page-footer");
+            if( ($('#page-wrapper').outerHeight(true) + $(footer).outerHeight(true)) <= $(window).height() )
+            {
+                $(footer).addClass("footer-bar-fixed-bottom");
+            }
+            else{
+                $(footer).removeClass("footer-bar-fixed-bottom");
+            }
+        }
+    });
+</script>
+</html>
