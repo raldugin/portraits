@@ -26,7 +26,7 @@ $(document).ready(function () {
 
     function sizeImgMediaInside() {
         var windowHeight = window.innerHeight;
-        var imgHeight = Math.round(windowHeight / 10 * 4);
+        var imgHeight = Math.round(windowHeight / 10 * 3);
         $('.imgMediaInside').height(imgHeight);
     }
 

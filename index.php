@@ -201,27 +201,10 @@
 		return $data;
 	}
 ?>
-
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-	<meta charset="UTF-8">
-	<title>Portraits.ua</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link href="/assets/css/normalize.css" rel="stylesheet">
-	<link rel="stylesheet" href="/assets/css/materialize.css" media="screen,projection">
-	<link href="/assets/css/styles.css" rel="stylesheet">
-</head>
-<body>
-<div id="page-wrapper"> <!-- page wrapper for footer calculate-->
 <?php
-	include_once INCLUDES_DIR.'header.html';
+require_once (INCLUDES_DIR.'header.html');
 ?>
 
-<main>
 	<section class="container">
 		<div class="imgMediaInside" style="background-image: url(img/panoramas/panorama_1800x1000.jpg);">
 			<div class="imgMediaInsidePromo"><img type="image/svg+xml" src="/img/panoramas/first_session.svg" class="transform"></div>
@@ -271,7 +254,7 @@
 	<section class="container" style="margin-bottom: 70px;">
 		<div class="row">
 			<h5 class="center-align">Новини проекту</h5>  <!--lime-text text-darken-4-->
-			<div class="col s12 m3 l3">
+			<div class="col s12 m4 l4">
 				<div class="card z-depth-2">
 					<div class="card-image">
 						<img src="img/news/1/1.jpg">
@@ -289,7 +272,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col s12 m3 l3">
+			<div class="col s12 m4 l4">
 				<div class="card z-depth-2">
 					<div class="card-image">
 						<img src="img/news/1/2.jpg">
@@ -307,28 +290,10 @@
 					</div>
 				</div>
 			</div>
-			<div class="col s12 m3 l3">
+			<div class="col s12 m4 l4">
 				<div class="card z-depth-2">
 					<div class="card-image">
 						<img src="img/news/1/3.jpg">
-					</div>
-					<div class="card-content matchheight">
-						<span class="card-title color-black">Презентація «ПортретиUA»</span>
-						<p>Першим про новий освітній проект ми розповіли друзям – учням «Школи Миру» Федерації всесвітнього миру...</p>
-						<p style="margin-top: 10px;"><b>15.11.2207</b></p>
-						<!--<p>Ідея  зібрання та популяризації історій українців – Праведників народів світу дуже сподобалася аудиторії. Це завдання тісно перегукується із завданням самої «Школи Миру» – поширення ідеї миру та формування миротворчого іміджу України.</p>-->
-						<!--<p>Під час презентації підлітки дізналися окремі історії порятунку євреїв у роки Другої світової війни, обговорили персоналії своїх майбутніх досліджень. Також, аби 13-18 річні громадяни краще осягнули дилему вибору:  чи рятувати іншу людину, коли на кону стоїть власне життя, їм запропонували інтерактивну гру «Тримай мене». Тренінг сподобався його учасникам. Обговорення показало високий ступінь усвідомлення ними важливості подвигу Праведників народів світу.</p>
-						<p>Історичні портрети від учнів «Школи миру»  незабаром з’являться на сайті проекту.</p>-->
-					</div>
-					<div class="card-action">
-						<a href="news.html">Переглянути</a>
-					</div>
-				</div>
-			</div>
-			<div class="col s12 m3 l3">
-				<div class="card z-depth-2">
-					<div class="card-image">
-						<img src="img/news/1/4.jpg">
 					</div>
 					<div class="card-content matchheight">
 						<span class="card-title color-black">Презентація «ПортретиUA»</span>
@@ -416,133 +381,7 @@
 			</div>
 		</div>
 	</section>
-</main>
-</div> <!-- end of page wrapper -->
 
-<footer class="page-footer lime darken-2">
-	<div class="container">
-		<div class="row">
-			<div class="col l6 s12">
-				<h5 class="white-text">Footer Content</h5>
-				<p>м. Київ, вул. Лаврська, 27
-					Тел.: (044) 185 94 52
-					Моб. (098) 771 27 66</p>
-				<p>email: portraitsua@gmail.com
-					www.warmuseum.kiev.ua</p>
-				<p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-			</div>
-			<div class="col l4 offset-l2 s12">
-				<!--<h5 class="white-text">Links</h5>
-				<ul>
-					<li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-					<li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-					<li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-					<li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-				</ul>-->
-			</div>
-		</div>
-	</div>
-	<div class="footer-copyright">
-		<div class="container">
-			© 2017 Національний музей історії України у Другій світовій війні. Меморіальний комплекс.
-		</div>
-	</div>
-</footer>
-</body>
-
-<script src="//code.jquery.com/jquery-latest.js"></script>
-<script src="assets/js/materialize.js"></script>
-<script src="assets/js/jquery.matchHeight-min.js"></script>
-<script>
-    $(document).ready(function () {
-
-        // smooth scroll to the anchor Id income from another page
-        //if(window.location.hash) {
-            //var margin = ($(document).height() / $(anchor).offset().top);
-            //console.log (margin);
-
-          //  $('html, body').animate({
-            //    scrollTop: $(window.location.hash).offset().top + 'px'
-            //}, 500, 'swing');
-        //}
-
-        $('.dropdown-button').dropdown({
-                constrainWidth: true, // Does not change width of dropdown to that of the activator
-                hover: true, // Activate on hover
-                gutter: 0, // Spacing from edge
-                belowOrigin: true, // Displays dropdown below the button
-                alignment: 'left', // Displays dropdown with edge aligned to the left of button
-                stopPropagation: false // Stops event propagation
-            }
-        );
-        $('.dropdown-button-mobile').dropdown({
-                //constrainWidth: true, // Does not change width of dropdown to that of the activator
-                hover: false, // Activate on hover
-                //gutter: 0, // Spacing from edge
-                belowOrigin: true, // Displays dropdown below the button
-                //alignment: 'right', // Displays dropdown with edge aligned to the left of button
-                stopPropagation: false // Stops event propagation
-            }
-        );
-        $('.button-collapse').sideNav();
-        $('.matchheight').matchHeight();
-        stickyFooter();
-        sizeImgMediaInside();
-        // offsetAnchor();
-        // function offsetAnchor() {
-        //     if (location.hash.length !== 0) {
-        //         window.scrollTo(window.scrollX, window.scrollY - 100);
-        //     }
-        // }
-
-        function sizeImgMediaInside() {
-            var windowHeight = window.innerHeight;
-            var imgHeight = Math.round(windowHeight / 10 * 5);
-            $('.imgMediaInside').height(imgHeight);
-        }
-
-        $(window).resize(function () {
-            clearTimeout(t);
-            var t = setTimeout(doAfterResize, 50);
-        });
-
-        function doAfterResize() {
-            sizeImgMediaInside();
-            stickyFooter();
-        }
-        function stickyFooter(){
-            var footer = $(".page-footer");
-            if( ($('#page-wrapper').outerHeight(true) + $(footer).outerHeight(true)) <= $(window).height() )
-            {
-                $(footer).addClass("footer-bar-fixed-bottom");
-            }
-            else{
-                $(footer).removeClass("footer-bar-fixed-bottom");
-            }
-        }
-    });
-</script>
-</html>
-
-<!--<section class="container" style="margin-top: 50px; margin-bottom: 70px;">
-		<div class="row">
-			<div class="col s12 m6 l6">
-				<h5 class="center-align matchheight">Хто рятує одне життя, рятує цілий світ</h5>
-				<p><img src="img/1session/shulezhko.jpg" class="fitImage"></p>
-				<h6 class="center-align">2017-2018 рр. Перша сесія проекту.</h6>
-<p>Олександра Шулежко народилася 1903 р. в селі Михайлівка Драбівського району (нині — Черкащина). Походила з заможної родини селян Шелудьків, закінчила гімназію, потім — педучилище. 1921 р. вийшла заміж за Федора Шулежка, який згодом став священиком Української автокефальної православної церкви. Його репресували 1937 р. Олександра залишилася сама з чотирма дітьми. Один син помер немовлям, другий став танкістом, згорів заживо під час війни, а дві доньки, Алла і Лариса, вижили.</p>
-<p>У роки війни Олександра Шулежко врятувала від смерті й голоду 102 дитини; з них 25 були євреями. Вона зуміла організувати притулок для дітей-безхатченків у Черкасах. Після окупації Черкас Олександра Максимівна бачила багато бездомних і сиріт. До рішення створити притулок спонукала зустріч з маленьким хлопчиком. Він сидів біля померлої жінки на вулиці. Олександра Максимівна привела дитину до себе додому. Згодом з'явився ще один знайда. Вона звернулася до гебітскомісара Черкас із пропозицією створити дитячий будинок. Ініціатива знайшла відгук. Із часом Олександра змогла якимось дивом розжитися й на фінансові вливання від німецької влади для дитбудинку. Організувала на невеличкій земельній ділянці господарство. Усім тим опікувалися вихованці.</p>
-<p>Завдяки хоробрості, винахідливості й піклуванню Олександри Шулежко діти вижили. Вона приймала у притулок усіх без винятку. Поміж інших дітей з'явилися й єврейські. Їх записували як українців, греків, вірмен або татар залежно від особливостей зовнішності. Цій мужній жінці було що втрачати: вона ризикувала власним життям і життям своїх дітей. Черкаські поліцаї написали на неї донос, і німецька поліція частенько навідувала притулок. Єврейських дітей переховували в ізоляторі. Німцям казали, що там тримають інфекційних хворих. Олександра Максимівна, завдяки доброму знанню німецької мови, переконала гебітскомісара у безпідставності підозр поліцая Руднєва.</p>
-<p>Коли німці відступали, вони примусово евакуювали й дитячий будинок. Гебітскомісар виділив дві машини. Олександра Шулежко прилаштувала частину вихованців у навколишніх селах, але з іншими мусила рушати з німцями. Вони доїхали до Вінницької області. Звідти Олександра Максимівна зуміла знову дістатися з дітьми до Черкас. Та тут її чекали. У місто повернулася радянська влада. Виховательку відсторонили від спілкування з дітьми, заборонили працювати за фахом. Олександра Максимівна влаштувалася на роботу до реєстратури. До 1968 р. її підозрювали у співпраці з нацистами. Натомість вихованці жінки завжди тепло згадували свою другу маму.</p>
-<p>Олександра Шулежко померла 1994 р. Через рік їй присвоїли почесне звання Праведник народів світу.</p>
-</div>
-<div class="col s12 m6 l6">
-	<h5 class="center-align matchheight">Українці – Праведники народів світу: призабута історія</h5>
-	<p><img src="img/1session/pravedniki.jpg" class="fitImage"></p>
-	<p>2017-2018 рр. Перша сесія проекту присвячена дослідженню життєвих історій українців, які, ризикуючи власним життям, рятували євреїв під час Другої світової війни та отримали. Державою Ізраїль нагороджені дипломами та медалями Праведників народів світу.</p>
-	<p>В Ізраїлі й дотепер вивчають документи часів Другої світової війни. Пошук людей, які врятували євреїв, триває. Щорічно впродовж понад 25 років проводить урочисті церемонії нагородження дипломами та медалями Праведників народів світу.</p>
-	<p>За даними Посольство Держави Ізраїль в Україні на 1 січня 2017 р., звання Праведника народів світу присвоєно 2573 громадянам України, за кількістю Праведників Україна посідає четверте місце у світі після Польщі, Нідерландів та Франції.</p>
-	<p>Уже вдруге урочиста церемонія проводитиметься в Національному музеї історії України у Другій світовій війні. Це стає доброю традицією, оскільки тема Голокосту, зокрема трагедії Бабиного Яру в Києві, є предметом наукових досліджень співробітників музею, вона рельєфно представлена в головній експозиції. Відвідувачі мають можливість ознайомитися з винятковими історіями та оригінальними матеріалами Праведників народів світу.</p>
-</div>
-</div>
-</section>-->
+<?php
+include_once (INCLUDES_DIR.'footer.html');
+?>

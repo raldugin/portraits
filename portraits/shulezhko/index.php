@@ -10,10 +10,8 @@
 	<section class="container" style="margin-top: 30px; margin-bottom: 30px;">
 		<div class="row">
 			<div class="col s12 m12 l9 xl9">
-
 						<h5>Шулежко Олександра</h5>
-
-				</div>
+        </div>
 
 			<div class="col s12 m12 l3 xl3 pushpin_card">
 

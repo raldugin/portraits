@@ -172,6 +172,7 @@ nav {
 .alphabetButton {
 	display: inline-block;
 	margin-bottom: 4px;
+	margin-right: 4px;
 	border-radius: 4px;
 	width: 34px;
 	height: 34px;
@@ -180,14 +181,22 @@ nav {
 	font-weight: 500;
 	line-height: 34px;
 	background: #afb42b;
+	opacity: 0.5;
+	cursor: not-allowed;
 }
-.alphabetButton:hover {
+.on {
+	opacity: 1;
+	cursor: pointer;
+}
+.on:hover {
 	background: #7e8218; /* темно кислотный */
 	-webkit-transition: all 1s cubic-bezier(0.190, 1.000, 0.220, 1.000);
 	-moz-transition: all 1s cubic-bezier(0.190, 1.000, 0.220, 1.000);
 	-o-transition: all 1s cubic-bezier(0.190, 1.000, 0.220, 1.000);;
 	transition: all 1s cubic-bezier(0.190, 1.000, 0.220, 1.000);
 }
+
+
 .blogger {
 	font-family: 'Blogger';
 	font-weight: 500;
@@ -198,11 +207,6 @@ nav {
 .custom-content-size {
 	font-size: 13px;
 }
-.off {
-	opacity: 0.5;
-	cursor: not-allowed;
-}
-
 img.responsive-img-size_50 {
 	max-width: 50%;
 	height: auto;
@@ -222,10 +226,6 @@ img.responsive-img-size_50 {
 	padding: 0.7rem;
 	background-color: #fff;
 	border-bottom: 1px solid #ddd;
-}
-
-.collapsible-header {
-
 }
 
 .collapsible-header i {

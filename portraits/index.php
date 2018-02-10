@@ -1,6 +1,7 @@
 <?php
 	require_once ($_SERVER['DOCUMENT_ROOT'].'/includes/params.php');
-	require_once (INCLUDES_DIR.'header.html');
+    require_once (INCLUDES_DIR.'arrays.php');
+    require_once (INCLUDES_DIR.'header.html');
 ?>
 
 	<section class="container">
@@ -20,38 +21,36 @@
 			<div class="col s12 m4 l4">
 				<div class="row">
 					<div class="card-panel white z-depth-0 matchheight" style="padding-top: 0;">
-						<button class="alphabetButton off">А</button>
-						<button class="alphabetButton">Б</button>
-						<button class="alphabetButton">В</button>
-						<button class="alphabetButton">Г</button>
-						<button class="alphabetButton">Ґ</button>
-						<button class="alphabetButton">Д</button>
-						<button class="alphabetButton">Е</button>
-						<button class="alphabetButton">Є</button>
-						<button class="alphabetButton">Ж</button>
-						<button class="alphabetButton">З</button>
-						<button class="alphabetButton">И</button>
-						<button class="alphabetButton">І</button>
-						<button class="alphabetButton">Ї</button>
-						<button class="alphabetButton">Й</button>
-						<button class="alphabetButton off">К</button>
-						<button class="alphabetButton off">Л</button>
-						<button class="alphabetButton">М</button>
-						<button class="alphabetButton">Н</button>
-						<button class="alphabetButton">О</button>
-						<button class="alphabetButton">П</button>
-						<button class="alphabetButton">Р</button>
-						<button class="alphabetButton">С</button>
-						<button class="alphabetButton">Т</button>
-						<button class="alphabetButton">У</button>
-						<button class="alphabetButton">Ф</button>
-						<button class="alphabetButton">Х</button>
-						<button class="alphabetButton">Ц</button>
-						<button class="alphabetButton">Ч</button>
-						<button class="alphabetButton off">Ш</button>
-						<button class="alphabetButton">Щ</button>
-						<button class="alphabetButton off">Ю</button>
-						<button class="alphabetButton">Я</button>
+                        <?php
+                        $alphabetCount = count($alphabet_DataBase);
+                        for ($i=0; $i<$alphabetCount; $i++)
+                        {
+                            $button = checkAlphabets($alphabet_DataBase[$i], $persons_DataBase);
+                            echo $button;
+                        }
+                        /**
+                         * @param $alpabet - элемент массива (буквы украинского языка)
+                         * @param $persons_DataBase - массив с данными персоналий, где ключи ассоциативного массива - фамилии
+                         * @return string - возвращает html кнопку активную (class='on'), если буква $alpabet,
+                         *                  совпадае с первой буквой фамилии (ключа массива $persons_DataBase),
+                         *                  иначе возвращает неактивную кнопку
+                         */
+                        function checkAlphabets($alpabet, $persons_DataBase )
+                        {
+                            foreach ($persons_DataBase as $person => $data) {
+                                // возвращает 1 символ из ключа массива (фамилии), в кодировке UTF-8
+                                $firstchar = mb_substr($person, 0, 1);
+                                if ($firstchar === $alpabet) {
+                                    // активная кнопка добавлен class=on
+                                    $button = "<button class='alphabetButton on'>$alpabet</button>";
+                                    return $button;
+                                }
+                            }
+                            // неактивная кнопка
+                            $button = "<button class='alphabetButton'>$alpabet</button>";
+                            return $button;
+                        }
+                        ?>
 					</div>
 			</div>
 		</div>
