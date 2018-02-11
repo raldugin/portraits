@@ -2,9 +2,10 @@
 require_once ($_SERVER['DOCUMENT_ROOT'].'/includes/params.php');
 require_once (INCLUDES_DIR.'arrays.php');
 
-$persona_id = $persona_photo_avatar = $persona_avatarka_text = $persona_zagolovok =
-$persona_photo_author = $persona_author_name = $persona_author_place =
-$persona_promo_video = $persona_collection_link = $persona_other_video = '';
+    $persona_id = $persona_photo_avatar = $persona_avatarka_text = $persona_zagolovok =
+    $persona_photo_author = $persona_author_name = $persona_author_place =
+    $persona_promo_video = $persona_collection_link = $persona_other_video =
+    $persona_library = $persona_pdf = '';
 
 if (isset($_POST['persona_id']))
 {
@@ -14,6 +15,7 @@ if (isset($_POST['persona_id']))
     $persona_image_dir = $persona_dir . '/img/';
     $persona_photo_avatar_dir = $persona_image_dir . '/avatar/';
     $persona_photo_author_dir = $persona_image_dir . '/author/';
+    $persona_pdf_dir = $persona_dir . '/pdf/';
 
     $persona_id = $_POST['persona_id'];
     $persona_avatarka_text = $_POST['persona_avatarka_text'];
@@ -23,26 +25,26 @@ if (isset($_POST['persona_id']))
     $persona_promo_video = $_POST['persona_promo_video'];
     $persona_collection_link = $_POST['persona_collection_link'];
     $persona_other_video = $_POST['persona_other_video'];
+    $persona_library = $_POST['persona_library'];
+
 
     $persona_data [$persona_id] = [
         //'persona_photo_avatar' => $persona_photo_avatar,
         'persona_avatarka_text' => $persona_avatarka_text,
         'persona_zagolovok' => $persona_zagolovok,
-
+        'persona_images' => [],
         //'persona_photo_author' => $persona_photo_author,
         'persona_author_name' => $persona_author_name,
         'persona_author_place' => $persona_author_place,
-
         'persona_promo_video' => $persona_promo_video,
         'persona_collection_link' => $persona_collection_link,
         'persona_other_video' => $persona_other_video,
-        'persona_images' => []
+        'persona_library' => $persona_library,
+        'persona_pdf' => []
     ];
     echo '<pre>';
     print_r($_POST);
-    //print_r($persona_data);
     print_r($_FILES);
-    var_dump($_FILES['persona_images']['name']);
     echo '</pre>';
 
     if (!is_dir($persona_dir)) {
@@ -50,6 +52,30 @@ if (isset($_POST['persona_id']))
         mkdir($persona_image_dir);
         mkdir($persona_photo_avatar_dir);
         mkdir($persona_photo_author_dir);
+        mkdir($persona_pdf_dir);
+    }
+    function upload_single_file ($filesArray, $pathToUpload)
+    {
+        global $persona_data, $persona_id;
+        $fileCounter = count($filesArray['name']);
+        for ($i=0; $i < $fileCounter; $i++ )
+        {
+            $fileName = $filesArray['name'][$i];
+            $fileTmpName = $filesArray['tmp_name'][$i];
+            $fileError = $filesArray['error'][$i];
+
+            if ($fileError < 1){
+                move_uploaded_file ($fileTmpName, $pathToUpload . $fileName);
+                array_push($persona_data[$persona_id]['persona_pdf'], $fileName);
+            }
+        }
+
+        echo '-------------------------- <pre>';
+        print_r($filesArray);
+        echo $fileCounter;
+        echo '-------------------------- </pre>';
+
+
     }
     /**
      * @param $imageArray - массив атрибутов изображения из $_FILES
@@ -62,70 +88,62 @@ if (isset($_POST['persona_id']))
      * @param $key          - имя нового ключа массива $persona_data [$persona_id],
      *                      где его значение на выходе это имя файла, которое залито в директорию
      */
-    function upload_single_image ($imageArray, $pathToUpload, $key)
-    {
-        echo '<pre>';
-        print_r($imageArray);
-        echo '</pre>';
-
-        global $persona_data, $persona_id;
-        $imageName = $imageArray['name'];
-        $imageTmpName = $imageArray['tmp_name'];
-        //  exif_imagetype - читает первые байты изображения и проверяет его подпись
-        $imageMimeType = exif_imagetype($imageTmpName);
-        $checkedMimeType = [IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG];
-
-        if (in_array($imageMimeType, $checkedMimeType) && ($imageArray['error'] < 1) )
+        function upload_single_image($imageArray, $pathToUpload, $key)
         {
-            move_uploaded_file($imageTmpName,$pathToUpload . $imageName);
-            $persona_data [$persona_id]=array_merge($persona_data [$persona_id], [$key=>$imageName]);
+            global $persona_data, $persona_id;
+            $imageName = $imageArray['name'];
+            $imageTmpName = $imageArray['tmp_name'];
+            //  exif_imagetype - читает первые байты изображения и проверяет его подпись
+            $imageMimeType = exif_imagetype($imageTmpName);
+            $checkedMimeType = [IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG];
+
+            if (in_array($imageMimeType, $checkedMimeType) && ($imageArray['error'] < 1)) {
+                move_uploaded_file($imageTmpName, $pathToUpload . $imageName);
+                $persona_data [$persona_id] = array_merge($persona_data [$persona_id], [$key => $imageName]);
+            } else {
+                die('ошибка загрузки файлов');
+            }
         }
-        else {
-            die('ошибка загрузки файлов');
-        }
-    }
 
     /**
      * @param $imageArray       - $imageArray - массив атрибутов изображения из $_FILES
      * @param $pathToUpload     - путь куда надо сохранять файл если нет ошибок по проверке MIME типу файла
      */
-    function upload_multiple_image ($imageArray, $pathToUpload)
-    {
-        global $persona_data, $persona_id;
-        // считаем количество элементов массива, что равно кол-ву загруженных изображений
-        $imageCounter = count($imageArray['name']);
-        $checkedMimeType = [IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG];
-
-        for ($i=0; $i < $imageCounter; $i++)
+        function upload_multiple_image($imageArray, $pathToUpload)
         {
-            $imageName = $imageArray['name'][$i];
-            $imageTmpName = $imageArray['tmp_name'][$i];
-            $imageMimeType = exif_imagetype($imageTmpName);
+            global $persona_data, $persona_id;
+            // считаем количество элементов массива, что равно кол-ву загруженных изображений
+            $imageCounter = count($imageArray['name']);
+            $checkedMimeType = [IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG];
 
-            // если нет ошибок в сравнению MIME типов и нет ошибок (число 0) в массиве ошибок загруженного изображения
-            if ( in_array($imageMimeType, $checkedMimeType) && ($imageArray['error'][$i] < 1) )
-            {
-                move_uploaded_file($imageTmpName,$pathToUpload . $imageName);
-                array_push($persona_data [$persona_id]['persona_images'], $imageName);
+            for ($i = 0; $i < $imageCounter; $i++) {
+                $imageName = $imageArray['name'][$i];
+                $imageTmpName = $imageArray['tmp_name'][$i];
+                $imageMimeType = exif_imagetype($imageTmpName);
+
+                // если нет ошибок в сравнению MIME типов и нет ошибок (число 0) в массиве ошибок загруженного изображения
+                if (in_array($imageMimeType, $checkedMimeType) && ($imageArray['error'][$i] < 1)) {
+                    move_uploaded_file($imageTmpName, $pathToUpload . $imageName);
+                    array_push($persona_data [$persona_id]['persona_images'], $imageName);
+                } else {
+                    die('ошибка загрузки файлов');
+                }
             }
-            else {
-                die('ошибка загрузки файлов');
-            }
+    }
+
+        if (!empty($_FILES['persona_photo_avatar']['name'])) {
+            upload_single_image($_FILES['persona_photo_avatar'], $persona_photo_avatar_dir, 'persona_photo_avatar');
         }
-    }
+        if (!empty($_FILES['persona_photo_author']['name'])) {
+            upload_single_image($_FILES['persona_photo_author'], $persona_photo_author_dir, 'persona_photo_author');
+        }
+        if (!empty($_FILES['persona_images']['name'][0])) {
+            upload_multiple_image($_FILES['persona_images'], $persona_image_dir);
+        }
+        if (!empty($_FILES['persona_pdf']['name'][0])) {
+            upload_single_file($_FILES['persona_pdf'], $persona_pdf_dir);
+        }
 
-    if (!empty($_FILES['persona_photo_avatar']['name']))
-    {
-        upload_single_image ($_FILES['persona_photo_avatar'], $persona_photo_avatar_dir, 'persona_photo_avatar');
-    }
-    if (!empty($_FILES['persona_photo_author']['name']))
-    {
-        upload_single_image ($_FILES['persona_photo_author'], $persona_photo_author_dir, 'persona_photo_author');
-    }
-    if (!empty($_FILES['persona_images']['name'][0]))
-    {
-        upload_multiple_image ($_FILES['persona_images'], $persona_image_dir);
-    }
 
     echo '<pre>';
     print_r($persona_data);
@@ -146,7 +164,9 @@ if (isset($_POST['persona_id']))
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Нова персона</title>
     <link rel="stylesheet" href="/assets/css/normalize.css" media="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/bootstrap.css" media="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <style>
         .btn-custom {
             margin-bottom: 5px;
@@ -154,24 +174,25 @@ if (isset($_POST['persona_id']))
             max-width: 100%;
             padding: 10px 0;
         }
-        .BtnRemove_off{
+
+        .BtnRemove_off {
             display: none;
         }
-        th {
-            vertical-align: middle !important;
-        }
-        th:first-child {
-            width: 80px;
-        }
+        /
         .form-group {
             margin-bottom: 30px;
         }
+        input:focus::-webkit-input-placeholder { color:transparent; }
+        input:focus:-moz-placeholder { color:transparent; }
+        textarea:focus::-webkit-input-placeholder { color:transparent; }
+        textarea:focus:-moz-placeholder { color:transparent; }
+
     </style>
 </head>
 <body>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12" style="margin-bottom: 20px; padding: 20px 0; background: #d1d1d1; text-align: center;">
+        <div class="col-12" style="margin-bottom: 20px; padding: 20px 0; background: #afb42b; text-align: center;">
             <h4>Інформація про нову персоналію та автора</h4>
         </div>
     </div>
@@ -197,8 +218,8 @@ if (isset($_POST['persona_id']))
                         </div>
                         <div class="form-group">
                             <label for="exampleTextarea"><b>Опис під аватаром</b></label>
-                            <textarea class="form-control" name="persona_avatarka_text"
-                                      placeholder="Введіть цитату под аватаркой" rows="5"></textarea>
+                            <textarea class="form-control" name="persona_avatarka_text" placeholder="Введіть цитату под аватаркой"
+                                      rows="5"></textarea>
                         </div>
                     </div>
                 </div>
@@ -259,9 +280,8 @@ if (isset($_POST['persona_id']))
                 <div class="card card-outline-secondary mb-3">
                     <div class="card-block">
                         <div class="form-group">
-                            <label for="exampleInputEmail1"><b>Відео (Посилання на додаткове відео)</b></label>
-                            <input type="text" class="form-control clone_more_video" name="persona_other_video[]"
-                                   placeholder="Адреса відео">
+                            <label for="otherVideo"><b>Відео (Посилання на додаткове відео)</b></label>
+                            <input id="otherVideo" type="text" class="form-control clone_more_video" name="persona_other_video[]">
                         </div>
                         <button type="button" class="btn btn-success add" data-clone="clone_more_video">+</button>
                         <button type="button" class="btn btn-success remove BtnRemove_off"
@@ -274,7 +294,8 @@ if (isset($_POST['persona_id']))
                     <div class="card-block">
                         <div class="form-group">
                             <label for="exampleInputEmail1"><b>Бібліотека</b></label>
-                            <input type="text" class="form-control clone_library" name="persona_library[]" placeholder="Матеріали">
+                            <input type="text" class="form-control clone_library" name="persona_library[]"
+                                   placeholder="Матеріали">
                         </div>
                         <button type="button" class="btn btn-success add" data-clone="clone_library">+</button>
                         <button type="button" class="btn btn-success remove BtnRemove_off" data-remove="clone_library"
@@ -282,9 +303,22 @@ if (isset($_POST['persona_id']))
                         </button>
                     </div>
                 </div>
+                <div class="card card-outline-secondary mb-3">
+                    <div class="card-block">
+                        <div class="form-group">
+                            <label for="exampleInputFile"><b>Файли бібліотеки (pdf)</b></label>
+                            <input type="file" class="form-control-file clone_library_file" name="persona_pdf[]" multiple=""
+                                   accept="application/pdf">
+                        </div>
+                        <button type="button" class="btn btn-success add" data-clone="clone_library_file">+</button>
+                        <button type="button" class="btn btn-success remove BtnRemove_off"
+                                data-remove="clone_library_file" data-count="1">-
+                        </button>
+                    </div>
+                </div>
 
+            </div>
         </div>
-    </div>
         <button class="btn btn-primary" type='submit'>Создать</button>
     </form>
 </div>
@@ -295,8 +329,6 @@ if (isset($_POST['persona_id']))
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 <script>
     $(document).ready(function(){
-
-
             var counter;
             $('.add').click(function()
                 {
@@ -308,8 +340,9 @@ if (isset($_POST['persona_id']))
                     counter = $(this).next().attr('data-count');
                     counter++;
                     $(this).next().attr('data-count', counter);
-
-                    $(item).filter(':last').clone().insertAfter(lastitem);
+                    // находим последний элемент $(item).filter(':last')
+                    // клонируем, вставляем его после исходного и очищаем его значение ( для INPUT тэгов)
+                    $(item).filter(':last').clone().insertAfter(lastitem).val('');
                     $(this).next().one().removeClass('BtnRemove_off');
 
                 }
