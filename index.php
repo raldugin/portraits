@@ -383,5 +383,5 @@ require_once (INCLUDES_DIR.'header.html');
 	</section>
 
 <?php
-include_once (INCLUDES_DIR.'footer.html');
+include_once(INCLUDES_DIR . 'footer.php');
 ?>

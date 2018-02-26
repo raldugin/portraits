@@ -1,13 +1,26 @@
 <?php
-	require_once ($_SERVER['DOCUMENT_ROOT'].'/includes/params.php');
-    require_once (INCLUDES_DIR.'arrays.php');
-    require_once (INCLUDES_DIR.'header.html');
+	//require_once ($_SERVER['DOCUMENT_ROOT'].'/includes/params.php');
+    //require_once (INCLUDES_DIR.'arrays.php');
+    //require_once (INCLUDES_DIR.'header.html');
+    require_once '../includes/params.php';
+    require_once '../includes/arrays.php';
+    require_once '../includes/header.html';
 ?>
 
-	<section class="container">
-		<div class="colorLineBack deep-purple darken-3"></div>
-		<div class="indigo lighten-2"><h5 class="white-text noMargin">Банк портретів</h5></div>
-	</section>
+
+
+<section class="container-fluid">
+    <div class="colorLineBack deep-purple darken-3"></div>
+    <div class="indigo lighten-2">
+        <div class="container">
+            <h5 class="white-text noMargin">Банк портретів</h5>
+        </div>
+    </div>
+</section>
+
+<!--<div class="tmpBlock">
+    skew block
+</div>-->
 
 	<section class="container" style="margin-top: 30px; margin-bottom: 30px;">
 		<div class="row">
@@ -108,5 +121,5 @@
 	</section>
 
 <?php
-	include_once (INCLUDES_DIR.'footer.html');
+	include_once '../includes/footer.php';
 ?>

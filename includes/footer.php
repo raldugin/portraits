@@ -20,7 +20,7 @@
 	</div>
 	<div class="footer-copyright">
 		<div class="container">
-			© 2017 Національний музей історії України у Другій світовій війні. Меморіальний комплекс.
+			© <?php echo date('Y'); ?> Національний музей історії України у Другій світовій війні. Меморіальний комплекс.
 		</div>
 	</div>
 </footer>
@@ -29,6 +29,7 @@
 <script src="//code.jquery.com/jquery-latest.js"></script>
 <script src="/assets/js/materialize.min.js"></script>
 <script src="/assets/js/jquery.matchHeight-min.js"></script>
+<script src="/assets/js/slick.min.js"></script>
 <script src="/assets/js/scripts.js"></script>
 <script id="dsq-count-scr" src="//portraitsua.disqus.com/count.js" async></script>
 </html>

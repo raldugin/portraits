@@ -60,7 +60,7 @@ echo '</pre>';*/
 </section>
 
 <?php
-	include_once (INCLUDES_DIR.'footer.html');
+	include_once(INCLUDES_DIR . 'footer.php');
 ?>
 <!--<button class="alphabetButton <?/*=$status*/?>">А</button>
 <button class="alphabetButton <?/*=$status*/?>">Б</button>
